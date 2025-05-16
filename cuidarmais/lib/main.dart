@@ -11,7 +11,7 @@ class CuidarApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Chatbot(),
+      home: SignUpPage(),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -77,7 +77,7 @@ class LoginPage extends StatelessWidget {
                         const SizedBox(height: 16),
                         _outlinedButton('Não tenho conta ainda', context),
                         const SizedBox(height: 24),
-                        _buildPrimaryButton('Entrar'),
+                        _buildPrimaryButton('Entrar',context),
                       ],
                     ),
                   ),
@@ -131,7 +131,7 @@ class LoginPage extends StatelessWidget {
                               const SizedBox(height: 16),
                               _outlinedButton('Não tenho conta ainda', context),
                               const SizedBox(height: 24),
-                              _buildPrimaryButton('Entrar'),
+                              _buildPrimaryButton('Entrar',context),
                             ],
                           ),
                         ),
@@ -217,7 +217,7 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  Widget _buildPrimaryButton(String text) {
+  Widget _buildPrimaryButton(String text,BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color(0xFF9933CC),
@@ -227,7 +227,11 @@ class LoginPage extends StatelessWidget {
           borderRadius: BorderRadius.circular(border_radius),
         ),
       ),
-      onPressed: () {},
+      onPressed: () {
+         Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const Chatbot()));
+      },
       child: Text(text),
     );
   }

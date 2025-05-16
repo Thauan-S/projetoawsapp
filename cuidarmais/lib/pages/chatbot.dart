@@ -8,6 +8,10 @@ class Chatbot extends StatefulWidget {
 }
 
 class _ChatbotState extends State<Chatbot> {
+  final _chatController=TextEditingController();
+
+    String  text ="9o";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,28 +42,28 @@ class _ChatbotState extends State<Chatbot> {
                   child: Row(
                 children: [
                   Image.asset('assets/queue.png',
-                      height: 40, 
+                      height: 70, 
                       width:
-                          40, 
+                          70, 
                       fit: BoxFit
                           .contain), 
                   Image.asset('assets/livro.png',
-                      height: 40, 
+                      height: 70, 
                       width:
-                          40, 
+                          70, 
                       fit: BoxFit.contain),
                 ],
               )),
             ),
             ListTile(
-              title: const Text('Item 1'),
+              title: const Text('Nome'),
               onTap: () {
                 // Update the state of the app.
                 // ...
               },
             ),
             ListTile(
-              title: const Text('Item 2'),
+              title: const Text('Email'),
               onTap: () {
                 // Update the state of the app.
                 // ...
@@ -69,7 +73,45 @@ class _ChatbotState extends State<Chatbot> {
         ),
       ),
       body: Row(
-        children: [Text("OLA")],
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment:MainAxisAlignment.end ,
+        children: [ 
+          Text(text),
+          Container(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            child: Row(
+              children: [
+                
+      
+                  
+                  SizedBox(height: 20,),
+               Center(
+                
+                 child: SizedBox(
+                  height: 70,
+                  width: 800,
+                   child: TextField(  
+                    controller:_chatController,
+                   onChanged: (value) {
+                     
+                     setState(() {
+                       text+=_chatController.text=value;
+                     });
+                   },
+                    decoration: InputDecoration(border: const OutlineInputBorder())),
+                 ),
+               ),
+                IconButton(
+                  padding: EdgeInsets.only(bottom: 25),
+                  icon: Icon(Icons.send, color: Colors.tealAccent),
+                  onPressed: (){
+
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
