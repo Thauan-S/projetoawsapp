@@ -53,8 +53,10 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/queue.png
+    - assets/lupa.png
+    - assets/caderninho.png
     - assets/mobile.png
+    - assets/loggeduser.png
     - assets/livro.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
