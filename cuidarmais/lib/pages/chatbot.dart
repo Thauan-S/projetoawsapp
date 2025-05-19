@@ -15,7 +15,7 @@ class _ChatbotState extends State<Chatbot> {
   final double heigth_value = 50;
   String text = "";
   // Widget _styledTile(String title) {
-   
+
   // }
 
   @override
@@ -63,14 +63,14 @@ class _ChatbotState extends State<Chatbot> {
               ),
             ),
             ...[
-               const StyledTitleWidget(title: "Vacinas necessárias"),
+              const StyledTitleWidget(title: "Vacinas necessárias"),
               const StyledTitleWidget(title: "Rotina terapêutica"),
-              const StyledTitleWidget(title:'Fisioterapia precoce'),
-              const StyledTitleWidget(title:'Grupos de apoio'),
-              const StyledTitleWidget(title:'Como funciona o BPC'),
-              const StyledTitleWidget(title:'Escolas inclusivas'),
-              const StyledTitleWidget(title:'Microcefalia e epilepsia'),
-              const StyledTitleWidget(title:'Transporte público')
+              const StyledTitleWidget(title: 'Fisioterapia precoce'),
+              const StyledTitleWidget(title: 'Grupos de apoio'),
+              const StyledTitleWidget(title: 'Como funciona o BPC'),
+              const StyledTitleWidget(title: 'Escolas inclusivas'),
+              const StyledTitleWidget(title: 'Microcefalia e epilepsia'),
+              const StyledTitleWidget(title: 'Transporte público')
             ]
             // Container(
             //   child: ,
@@ -78,107 +78,109 @@ class _ChatbotState extends State<Chatbot> {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                const Text(
-                  "Ola, Juliana",
-                  style: TextStyle(fontSize: 20),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Image.asset(
-                  'assets/loggeduser.png',
-                  width: width_value + 30,
-                  height: heigth_value + 30,
-                ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: _messages.length,
-              itemBuilder: (context, index) {
-                return Align(
-
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                
-                    padding: const EdgeInsets.all(10),
-                    margin: const EdgeInsets.symmetric(vertical: 4),
-                    decoration: BoxDecoration(
-                        color:  const Color.fromARGB(147,167,183,255),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Text(
-                          _messages[index]),
-                      ],
-                    ),
+      body: Container(
+        decoration: BoxDecoration(
+          color: Color.fromARGB(217, 217, 217, 255),
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const Text(
+                    "Ola, Juliana",
+                    style: TextStyle(fontSize: 20),
                   ),
-                );
-              },
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Image.asset(
+                    'assets/loggeduser.png',
+                    width: width_value + 30,
+                    height: heigth_value + 30,
+                  ),
+                ],
+              ),
             ),
-          ),
-          Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-              child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  child: TextField(
-                    onSubmitted: (value) {
-                      final text = _chatController.text.trim();
-                      if (text.isNotEmpty) {
-                        setState(() {
-                          _messages.add(text);
-                          _chatController.clear();
-                        });
-                      }
-                    },
-                    controller: _chatController,
-                    decoration: InputDecoration(
-                      hintText: 'Digite sua mensagem...',
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
+            Expanded(
+              child: ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: _messages.length,
+                itemBuilder: (context, index) {
+                  return Align(
+                    alignment: Alignment.centerRight,
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.symmetric(vertical: 4),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(147, 167, 183, 255),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      suffixIcon: Row(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
-                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          IconButton(
-                            icon: const Icon(Icons.attach_file,
-                                color: Colors.tealAccent),
-                            onPressed: () {
-                              /// criar func de envio de arquivos para a IA
-
-                            },
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.send,
-                                color: Colors.tealAccent),
-                            onPressed: () {
-                              final text = _chatController.text.trim();
-                              if (text.isNotEmpty) {
-                                setState(() {
-                                  _messages.add(text);
-                                  _chatController.clear();
-                                });
-                              }
-                            },
-                          ),
+                          Text(_messages[index]),
                         ],
                       ),
                     ),
-                  )))
-        ],
+                  );
+                },
+              ),
+            ),
+            Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                    child: TextField(
+                      onSubmitted: (value) {
+                        final text = _chatController.text.trim();
+                        if (text.isNotEmpty) {
+                          setState(() {
+                            _messages.add(text);
+                            _chatController.clear();
+                          });
+                        }
+                      },
+                      controller: _chatController,
+                      decoration: InputDecoration(
+                        hintText: 'Digite sua mensagem...',
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                        ),
+                        suffixIcon: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              icon: const Icon(Icons.attach_file,
+                                  color: Color.fromARGB(255, 55, 134, 225)),
+                              onPressed: () {
+                                /// criar func de envio de arquivos para a IA
+                              },
+                            ),
+                            IconButton(
+                              icon: const Icon(Icons.send,
+                                  color: Color.fromARGB(255, 55, 134, 225)),
+                              onPressed: () {
+                                final text = _chatController.text.trim();
+                                if (text.isNotEmpty) {
+                                  setState(() {
+                                    _messages.add(text);
+                                    _chatController.clear();
+                                  });
+                                }
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    )))
+          ],
+        ),
       ),
     );
   }
